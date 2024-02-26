@@ -35,6 +35,9 @@ This is a simple file sharing web application built using Flask and SQLAlchemy. 
    ```
 6. Access the application in your browser at http://localhost:5000.
 
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 ## Usage
 
 - Visit the homepage (`/`) to see uploaded files.
