@@ -20,8 +20,8 @@ class File(db.Model):
 # Define the route for the homepage
 @app.route('/')
 def index():
-    # Check if the 'visited_start' cookie is set
-    if request.cookies.get('visited_start'):
+    # Check if the 'is_admin' cookie is set
+    if request.cookies.get('is_admin'):
         # If the cookie is set, query all files from the database and render the index.html template
         files = File.query.all()
         return render_template('index.html', files=files)
@@ -33,9 +33,9 @@ def index():
 def start(pw):
     # Check if the password provided matches the admin password
     if pw == ADMIN_PASSWORD:
-        # If the password matches, create a response object with a redirect to the homepage and set the 'visited_start' cookie
+        # If the password matches, create a response object with a redirect to the homepage and set the 'is_admin' cookie
         resp = make_response(redirect(url_for('index')))
-        resp.set_cookie('visited_start', 'true')
+        resp.set_cookie('is_admin', 'true')
         return resp
     # If the password does not match, return a message
     return "Password incorrect."
@@ -43,8 +43,8 @@ def start(pw):
 # Define the route for uploading files
 @app.route('/upload', methods=['POST'])
 def upload():
-    # Check if the 'visited_start' cookie is set
-    if request.cookies.get('visited_start'):
+    # Check if the 'is_admin' cookie is set
+    if request.cookies.get('is_admin'):
         # If the cookie is set, get the uploaded file and save it to the server
         file = request.files['file']
         filename = file.filename
