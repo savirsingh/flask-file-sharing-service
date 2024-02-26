@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download File</title>
+</head>
+<body>
+    <h1>Download File</h1>
+    <form action="{{ url_for('download', id=file.id) }}" method="post">
+        Password: <input type="password" name="password" required><br>
+        <input type="submit" value="Download">
+    </form>
+</body>
+</html>
